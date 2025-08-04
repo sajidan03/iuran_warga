@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('dues_members', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('id_user');
+            $table->integer('idduescategory');
         });
     }
 
