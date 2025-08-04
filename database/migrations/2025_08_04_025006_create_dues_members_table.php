@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('id_user');
-            $table->integer('idduescategory');
+            $table->integer('id_duescategory');
         });
     }
 
