@@ -28,5 +28,8 @@ class LoginController extends Controller
     return back()->withErrors([
         'login' => 'Username atau password salah',
     ])->onlyInput('username');
-}
+    }
+    public function showRegister(){
+        return view('login.register');
+    }
 }
