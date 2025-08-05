@@ -15,4 +15,4 @@ Route::get('/warga/dashboard', [WargaController::class, 'dashboard'])->name('war
 Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard')->middleware('auth');
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
 Route::post('/register', [LoginController::class, 'register'])->name('register.post');
-Route::p('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
