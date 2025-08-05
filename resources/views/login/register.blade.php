@@ -64,7 +64,7 @@
 
       <div class="mb-3">
         <label for="no_hp" class="form-label">No HP</label>
-        <input type="tel" id="no_hp" name="no_hp" class="form-control" placeholder="08xxxxxxxxxx" required>
+        <input type="tel" id="no_hp" name="phone" class="form-control" placeholder="08xxxxxxxxxx" required>
       </div>
 
       <div class="mb-3">
