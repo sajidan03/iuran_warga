@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class admin
+class warga
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()){
-            if(Auth::user()->role == 'admin'){
+          if(Auth::check()){
+            if(Auth::user()->level == 'member'){
                 return $next($request);
             }
 

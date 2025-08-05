@@ -13,23 +13,34 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'username' => 'required|string',
+        'password' => 'required|string',
+    ]);
 
-        $credentials = $request->only('username', 'password');
+    $credentials = $request->only('username', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('warga.dashboard')->with('success', 'Login berhasil!');
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+
+        if (Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard')->with('success', 'Login sebagai Admin berhasil!');
+        } elseif (Auth::user()->role === 'warga') {
+            return redirect()->route('warga.dashboard')->with('success', 'Login sebagai Warga berhasil!');
+        } else {
+            Auth::logout();
+            return back()->withErrors([
+                'login' => 'Role tidak dikenali.',
+            ]);
         }
-
-        return back()->withErrors([
-            'login' => 'Username atau password salah',
-        ])->onlyInput('username');
     }
+
+    return back()->withErrors([
+        'login' => 'Username atau password salah',
+    ])->onlyInput('username');
+}
+
 
     public function showRegister(){
         return view('login.register');

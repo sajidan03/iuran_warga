@@ -24,7 +24,7 @@
           <li class="nav-item"><a class="nav-link" href="#">Dues Category</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Dues Members</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Keluar</a></li>
+          <li class="nav-item"><a class="nav-link" href="/logout">Keluar</a></li>
         </ul>
       </div>
     </div>
