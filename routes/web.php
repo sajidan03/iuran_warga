@@ -16,3 +16,6 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin'])->name
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
 Route::post('/register', [LoginController::class, 'register'])->name('register.post');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/user', [AdminController::class, 'userView'])->name('users.index')->middleware('auth');
+Route::get('/user/edit/{id}', [AdminController::class, 'userEdit'])->name('users.edit')->middleware('auth');
+

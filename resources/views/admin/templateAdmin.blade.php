@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">User</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Officer</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Dues Category</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Dues Members</a></li>
