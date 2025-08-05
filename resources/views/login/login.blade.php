@@ -67,9 +67,9 @@
       </div>
     </form>
 
-    <p class="text-center mt-3">
+    {{-- <p class="text-center mt-3">
       Belum punya akun? <a href="/register" class="text-success">Daftar</a>
-    </p>
+    </p> --}}
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
