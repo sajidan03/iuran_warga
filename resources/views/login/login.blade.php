@@ -57,7 +57,7 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-green">Masuk</button>
+        <button type="submit" class="btn btn-green" name="login">Masuk</button>
       </div>
     </form>
 
