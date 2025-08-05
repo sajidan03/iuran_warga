@@ -32,4 +32,7 @@ class LoginController extends Controller
     public function showRegister(){
         return view('login.register');
     }
+    public function register(Request $request){
+
+    }
 }

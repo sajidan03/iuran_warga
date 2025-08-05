@@ -14,3 +14,4 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/dashboard', [WargaController::class, 'dashboard'])->name('warga.dashboard')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin']);
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
+Route::post('/register', [LoginController::class, 'register'])->name('register.post');
