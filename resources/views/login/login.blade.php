@@ -44,10 +44,16 @@
 </head>
 <body>
 
+
   <div class="login-card">
     <h3 class="text-center text-success mb-4"><i class="fas fa-people-group"></i></i>Login</h3>
-
+            @if ($errors->has('login'))
+    <div class="alert alert-danger">
+        {{ $errors->first('login') }}
+    </div>
+@endif
     <form action="/login" method="POST">
+        @csrf
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Masukkan username" required>
