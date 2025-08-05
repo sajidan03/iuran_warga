@@ -45,8 +45,8 @@
 
   <div class="register-card">
     <h3 class="text-center text-success mb-4"><i class="fas fa-user-plus"></i> Daftar Akun</h3>
-
     <form action="/register" method="POST">
+        @csrf
       <div class="mb-3">
         <label for="name" class="form-label">Nama Lengkap</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan nama lengkap" required>
@@ -64,7 +64,7 @@
 
       <div class="mb-3">
         <label for="no_hp" class="form-label">No HP</label>
-        <input type="tel" id="no_hp" name="phone" class="form-control" placeholder="08xxxxxxxxxx" required>
+        <input type="tel" id="phone" name="phone" class="form-control" placeholder="08xxxxxxxxxx" required>
       </div>
 
       <div class="mb-3">
@@ -73,7 +73,7 @@
       </div>
 
       <div class="d-grid">
-        <button type="submit" class="btn btn-green" name="register">Daftar</button>
+        <button type="submit" class="btn btn-green" name="register.post">Daftar</button>
       </div>
     </form>
 
