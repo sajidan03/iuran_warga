@@ -5,7 +5,7 @@ use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('warga.dashboard');
+    return view('admin.dashboard');
 });
 
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
