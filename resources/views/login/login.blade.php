@@ -1,124 +1,114 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login | DHQ Green</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <title>Login | Kaswarga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --green-dark: #004030;
-      --green-soft: #4A9782;
-      --beige: #DCD0A8;
-      --light-beige: #FFF9E5;
-    }
-
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-beige);
-    }
-
-    .login-page {
-      display: flex;
+    body {
       height: 100vh;
+      margin: 0;
+      display: flex;
     }
 
-    .login-left {
-      background-color: var(--green-dark);
-      color: var(--light-beige);
+    .left-panel {
+      background-color: #e6f0eb;
       flex: 1;
-      padding: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    .right-panel {
+      flex: 1;
+      background-color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 60px;
     }
 
-    .login-left h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-
-    .login-left p {
-      color: var(--beige);
-      margin-bottom: 30px;
+    .login-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 24px;
     }
 
     .form-control {
-      background-color: var(--light-beige);
-      border: 1px solid #ccc;
-      color: #000;
+      margin-bottom: 16px;
     }
 
-    .form-control::placeholder {
-      color: var(--beige);
+    .btn-login {
+      background-color: #5c8d7a;
+      color: white;
     }
 
-    .form-control:focus {
-      background-color: #ffffff;
-      color: #000;
-      box-shadow: 0 0 0 0.25rem rgba(74, 151, 130, 0.3);
+    .btn-login:hover {
+      background-color: #4c7b69;
     }
 
-    .btn-custom {
-      background-color: var(--green-soft);
-      color: #fff;
-      border: none;
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
     }
 
-    .btn-custom:hover {
-      background-color: #3e7c6d;
+    .divider::before, .divider::after {
+      content: "";
+      height: 1px;
+      background-color: #ccc;
+      position: absolute;
+      top: 50%;
+      width: 40%;
     }
 
-    .login-right {
-      flex: 1;
-      background: url('/assets/bg.jpg') no-repeat center center;
-      background-size: cover;
+    .divider::before {
+      left: 0;
     }
 
-    @media (max-width: 768px) {
-      .login-page {
-        flex-direction: column;
-      }
-      .login-right {
-        height: 250px;
-      }
+    .divider::after {
+      right: 0;
     }
   </style>
 </head>
 <body>
 
-<div class="login-page">
-  <div class="login-left">
-    <div class="d-flex align-items-center gap-2">
-      <div class="bg-white text-dark fw-bold rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+  <!-- Left Panel -->
+  <div class="left-panel text-center">
+    <img src="https://buserekspose.com/wp-content/uploads/2023/06/IMG-20230619-WA0122.jpg" alt="Exam Illustration" class="mb-4" style="max-width: 300px;">
+    <h2 class="fw-bold">Exam Mastery Hub</h2>
+    <p>Unleash your academic success with Exam Mastery Hub's Exam Excellence Platform.</p>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <!-- Logo Kaswarga -->
+    <div class="d-flex align-items-center gap-1 mb-4 justify-content-center">
+      <div class="bg-success text-white fw-bold rounded-circle d-flex align-items-center justify-content-center"
+           style="width: 56px; height: 56px; font-size: 1.5rem;">
         K
       </div>
-      <span class="fw-semibold" style="margin-left: -6px; color: var(--beige);">aswarga</span>
+      <span class="fw-bold" style="font-size: 1.8rem;">aswarga</span>
     </div>
-    <p style="margin-top: 10px">Log in untuk melanjutkan</p>
 
+    <!-- Login Form -->
+    <div class="login-title">Sign In to Kaswarga</div>
     <form method="POST" action="/login">
       @csrf
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Email address" name="username" required />
-      </div>
-      <div class="mb-3">
-        <input type="password" class="form-control" placeholder="Password" name="password" required />
-      </div>
-      <div class="d-flex gap-2">
-        <button type="submit" class="btn btn-custom w-100">Login</button>
-      </div>
+      <input type="text" name="username" class="form-control" placeholder="Username or email" required>
+      <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+      {{-- <div class="d-flex justify-content-end mb-3">
+        <a href="/forgot-password" class="text-small">Forgot password?</a>
+      </div> --}}
+
+      <button type="submit" class="btn btn-login w-100">Masuk</button>
     </form>
   </div>
 
-  <div class="login-right"></div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
