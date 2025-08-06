@@ -37,15 +37,13 @@
                     <td>{{ $user->phone}}</td>
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->role }}</td>
-                
+
                     <td class="text-center">
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        {{-- <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
+                        <form action="{{ route('users.delete', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
                             @csrf
-                            @method('DELETE')
                             <button class="btn btn-sm btn-danger">Hapus</button>
-                        </form> --}}
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        </form>
                     </td>
                 </tr>
                 @empty

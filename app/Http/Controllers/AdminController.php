@@ -95,4 +95,10 @@ class AdminController extends Controller
         $users['users'] = User::all();
         return view('admin.tambah.user', $users);
     }
+    public function userDelete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
+    }
 }
