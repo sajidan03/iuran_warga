@@ -22,6 +22,7 @@
       </div>
 
       <div class="d-flex align-items-center gap-3">
+<<<<<<< HEAD
         <a href="{{ route('users.index') }}" class="text-dark text-decoration-none">Pengguna</a>
         <a href="#" class="text-dark text-decoration-none">Warga</a>
         <a href="#" class="text-dark text-decoration-none">Petugas</a>
@@ -30,6 +31,24 @@
           Masuk
           <i class="fas fa-arrow-right"></i>
         </a>
+=======
+        <a href="#" class="text-dark text-decoration-none">Dashboard</a>
+        <a href="{{ route('users.index') }}" class="text-dark text-decoration-none">User</a>
+        <a href="#" class="text-dark text-decoration-none">Warga</a>
+        <a href="#" class="text-dark text-decoration-none">Petugas</a>
+
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center justify-content-center bg-success text-white rounded-circle text-decoration-none dropdown-toggle"
+            id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            style="width: 36px; height: 36px; font-weight: bold;">
+            M
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
+            <li><a class="dropdown-item" href="#">Profil</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+>>>>>>> 054e476 (fe)
       </div>
     </div>
   </nav>
