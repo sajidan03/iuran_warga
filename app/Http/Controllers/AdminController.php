@@ -14,10 +14,11 @@ class AdminController extends Controller
     public function userView(Request $request)
     {
         $search = $request->input('search');
-
         $users = User::when($search, function ($query, $search) {
             $query->where('name', 'like', "%$search%")
-                  ->orWhere('username', 'like', "%$search%");
+                  ->orWhere('username', 'like', "%$search%")
+                  ->orWhere("phone", "like", "%$search%")
+                  ->orWhere("address", "like", "%$search%");
         })->get();
         return view('admin.users', compact('users'));
     }
@@ -30,6 +31,7 @@ class AdminController extends Controller
 
     }
     public function userTambahView(){
-        return view('admin.tambah.user');
+        $users['users'] = User::all();
+        return view('admin.tambah.user', $users);
     }
 }

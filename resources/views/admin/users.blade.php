@@ -34,7 +34,7 @@
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->username }}</td>
-                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->phone}}</td>
                     <td>{{ $user->address }}</td>
                     <td>
                         <span class="badge bg-{{ $user->level == 'admin' ? 'primary' : 'secondary' }}">
@@ -48,6 +48,7 @@
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger">Hapus</button>
                         </form> --}}
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
                 @empty
