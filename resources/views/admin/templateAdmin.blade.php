@@ -26,6 +26,7 @@
         <a href="#" class="text-dark text-decoration-none">Warga</a>
         <a href="#" class="text-dark text-decoration-none">Petugas</a>
         <a href="#" class="text-dark text-decoration-none">Periode</a>
+        <a href="#" class="text-dark text-decoration-none">Pembayaran</a>
         {{-- <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>
