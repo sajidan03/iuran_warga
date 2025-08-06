@@ -17,13 +17,17 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sajidan',
             'username' => 'sajidan',
             'password' => bcrypt('sajidan123'),
+            'phone' => '085123456789',
+            'address' => 'Jl. Raya No. 123',
             // 'foto' => 'sajidan.png'
         ]
     );
         User::create([
             'name' => 'Dhiya',
-            'username' => 'dhiyazahra',
+            'username' => 'diya',
             'password' => bcrypt('123'),
+            'phone' => '085123456789',
+            'address' => 'Jl. Raya No. 123',
             // 'foto' => 'tangkal.jpg'
         ]);
     }
