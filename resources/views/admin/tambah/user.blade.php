@@ -64,15 +64,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="email" class="form-label required-field">Email</label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <label for="telepon" class="form-label">Nomor Telepon</label>
                             <div class="input-group">
