@@ -26,4 +26,10 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         return view('admin.users', compact('users'));
     }
+    public function userTambah(Request $request){
+
+    }
+    public function userTambahView(){
+        return view('admin.tambah.user');
+    }
 }

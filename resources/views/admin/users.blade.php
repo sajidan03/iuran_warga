@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-primary">Cari</button>
         </div>
         <div class="col-auto">
-            <a href="#" class="btn btn-success">+ Tambah Pengguna</a>
+            <a href="{{ route('user.tambah') }}" class="btn btn-success">+ Tambah Pengguna</a>
         </div>
     </form>
 

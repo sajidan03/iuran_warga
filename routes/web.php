@@ -18,4 +18,4 @@ Route::post('/register', [LoginController::class, 'register'])->name('register.p
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/user', [AdminController::class, 'userView'])->name('users.index')->middleware('auth');
 Route::get('/user/edit/{id}', [AdminController::class, 'userEdit'])->name('users.edit')->middleware('auth');
-
+Route::get('/add/user', [AdminController::class,'userTambahView'])->name('user.tambah')->middleware('auth');
