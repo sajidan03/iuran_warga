@@ -1,36 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Tampilan UI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            background-color: #007a63;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .text {
+            font-weight: bold;
+            color: #333;
+        }
+        .filter {
+            font-size: 14px;
+            color: #555;
+            margin-right: 20px;
+        }
+        .button {
+            background-color: #007a63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #005542;
+        }
+    </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">kaswarga.ypc</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">User</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Officer</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Dues Category</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Dues Members</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-          <li class="nav-item"><a class="nav-link" href="/logout">Keluar</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    @yield('content')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
+<div class="container">
+    <div class="logo">K</div>
+    <div class="text">kaswarga.ypc</div>
+    <div class="filter">Fitur</div>
+    <button class="button">Masuk →</button>
+</div>
+
+</body>
 </html>

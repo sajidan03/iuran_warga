@@ -21,6 +21,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user">Warga</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Officer</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Dues Category</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Dues Members</a></li>
