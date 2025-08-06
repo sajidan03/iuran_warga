@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->enum('role', ['admin', 'warga'])->default('warga');
             $table->string('foto')->nullable();
+            $table->string(('status'))->default('active');
             $table->rememberToken();
             $table->timestamps();
         });

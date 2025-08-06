@@ -22,13 +22,10 @@
       </div>
 
       <div class="d-flex align-items-center gap-3">
-        <a href="#" class="text-dark text-decoration-none">Fitur</a>
-        <style>
-
-        </style>
-        <a href="{{ route('users.index') }}">User</a>
-        <a href="">Warga</a>
-        <a href="">Petugas</a>
+        <a href="{{ route('users.index') }}" class="text-dark text-decoration-none">Pengguna</a>
+        <a href="#" class="text-dark text-decoration-none">Warga</a>
+        <a href="#" class="text-dark text-decoration-none">Petugas</a>
+        <a href="#" class="text-dark text-decoration-none">Periode</a>
         <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>
@@ -36,10 +33,7 @@
       </div>
     </div>
   </nav>
-
-  @yield('content')
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  @yield('content')
 </body>
-
 </html>

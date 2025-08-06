@@ -36,11 +36,8 @@
                     <td>{{ $user->username }}</td>
                     <td>{{ $user->phone}}</td>
                     <td>{{ $user->address }}</td>
-                    <td>
-                        <span class="badge bg-{{ $user->level == 'admin' ? 'primary' : 'secondary' }}">
-                            {{ ucfirst($user->level) }}
-                        </span>
-                    </td>
+                    <td>{{ $user->role }}</td>
+                
                     <td class="text-center">
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
                         {{-- <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
