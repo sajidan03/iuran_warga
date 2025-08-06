@@ -18,7 +18,7 @@
           style="width: 32px; height: 32px;">
           K
         </div>
-        <span class="fw-semibold">Kaswarga</span>
+        <span class="fw-semibold">aswarga</span>
       </div>
 
       <div class="d-flex align-items-center gap-3">

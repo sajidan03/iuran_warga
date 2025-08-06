@@ -1,77 +1,124 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - DHQ Green</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | DHQ Green</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
-    body {
-      background-color: #e8f5e9;
+    :root {
+      --green-dark: #004030;
+      --green-soft: #4A9782;
+      --beige: #DCD0A8;
+      --light-beige: #FFF9E5;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-beige);
+    }
+
+    .login-page {
       display: flex;
-      align-items: center;
-      justify-content: center;
       height: 100vh;
     }
 
-    .login-card {
-      background-color: #ffffff;
-      border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 8px 16px rgba(0, 128, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
+    .login-left {
+      background-color: var(--green-dark);
+      color: var(--light-beige);
+      flex: 1;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    .btn-green {
-      background-color: #43a047;
-      color: white;
+    .login-left h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
     }
 
-    .btn-green:hover {
-      background-color: #388e3c;
+    .login-left p {
+      color: var(--beige);
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      background-color: var(--light-beige);
+      border: 1px solid #ccc;
+      color: #000;
+    }
+
+    .form-control::placeholder {
+      color: var(--beige);
     }
 
     .form-control:focus {
-      border-color: #66bb6a;
-      box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+      background-color: #ffffff;
+      color: #000;
+      box-shadow: 0 0 0 0.25rem rgba(74, 151, 130, 0.3);
+    }
+
+    .btn-custom {
+      background-color: var(--green-soft);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #3e7c6d;
+    }
+
+    .login-right {
+      flex: 1;
+      background: url('/assets/bg.jpg') no-repeat center center;
+      background-size: cover;
+    }
+
+    @media (max-width: 768px) {
+      .login-page {
+        flex-direction: column;
+      }
+      .login-right {
+        height: 250px;
+      }
     }
   </style>
 </head>
 <body>
 
-
-  <div class="login-card">
-    <h3 class="text-center text-success mb-4"><i class="fas fa-people-group"></i></i>Login</h3>
-            @if ($errors->has('login'))
-    <div class="alert alert-danger">
-        {{ $errors->first('login') }}
+<div class="login-page">
+  <div class="login-left">
+    <div class="d-flex align-items-center gap-2">
+      <div class="bg-white text-dark fw-bold rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+        K
+      </div>
+      <span class="fw-semibold" style="margin-left: -6px; color: var(--beige);">aswarga</span>
     </div>
-@endif
-    <form action="/login" method="POST">
-        @csrf
+    <p style="margin-top: 10px">Log in untuk melanjutkan</p>
+
+    <form method="POST" action="/login">
+      @csrf
       <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Masukkan username" required>
+        <input type="email" class="form-control" placeholder="Email address" name="username" required />
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
+        <input type="password" class="form-control" placeholder="Password" name="password" required />
       </div>
-      <div class="d-grid">
-        <button type="submit" class="btn btn-green" name="login">Masuk</button>
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-custom w-100">Login</button>
       </div>
     </form>
-
-    {{-- <p class="text-center mt-3">
-      Belum punya akun? <a href="/register" class="text-success">Daftar</a>
-    </p> --}}
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="login-right"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
