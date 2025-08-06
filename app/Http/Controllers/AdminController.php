@@ -34,7 +34,7 @@ class AdminController extends Controller
         'username' => 'required|string|max:255|unique:users,username',
         'phone' => 'required|string|max:15',
         'address' => 'required|string',
-        'password' => 'required|string|min:6|confirmed',
+        'password' => 'required|string|confirmed',
         'role' => 'required|in:admin,warga',
         'status' => 'required',
     ]);
