@@ -23,10 +23,10 @@ class AdminController extends Controller
         })->get();
         return view('admin.users', compact('users'));
     }
-    public function userEdit($id)
+    public function userEditView($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users', compact('users'));
+        return view('admin.edit.user', compact('user'));
     }
     public function userTambah(Request $request){
         $request->validate([
@@ -56,6 +56,41 @@ class AdminController extends Controller
     return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');
     }
 
+
+    public function userEdit(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255|unique:users,username,' . $id,
+        'phone' => 'nullable|string|max:20',
+        'address' => 'required|string|max:500',
+        'role' => 'required|in:admin,warga',
+        'password' => 'nullable',
+    ]);
+
+    $user = User::findOrFail($id);
+
+    $user->name = $request->name;
+    $user->username = $request->username;
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+    $user->role = $request->role;
+    $user->status = $request->has('status') ? 1 : 0;
+
+    if ($request->password) {
+        $user->password = bcrypt($request->password);
+    }
+
+    // if ($request->hasFile('photo')) {
+    //     if ($user->photo && Storage::exists('public/' . $user->photo)) {
+    //         Storage::delete('public/' . $user->photo);
+    //     }
+    //     $file = $request->file('photo')->store('user_photos', 'public');
+    //     $user->photo = $file;
+    // }
+    $user->save();
+    return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
+}
     public function userTambahView(){
         $users['users'] = User::all();
         return view('admin.tambah.user', $users);

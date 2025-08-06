@@ -17,6 +17,7 @@ Route::get('/register', [LoginController::class, 'showRegister'])->name('registe
 Route::post('/register', [LoginController::class, 'register'])->name('register.post');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/user', [AdminController::class, 'userView'])->name('users.index')->middleware('auth');
-Route::get('/user/edit/{id}', [AdminController::class, 'userEdit'])->name('users.edit')->middleware('auth');
+Route::get('/user/edit/{id}', [AdminController::class, 'userEditView'])->name('users.edit')->middleware('auth');
+Route::post('/user/edit/{id}', [AdminController::class, 'userEdit'])->name('users.edit')->middleware('auth');
 Route::get('/add/user', [AdminController::class,'userTambahView'])->name('user.tambah')->middleware('auth');
 Route::post('/add/user', [AdminController::class,'userTambah'])->name('user.tambah.post')->middleware('auth');
