@@ -26,11 +26,21 @@
         <a href="#" class="text-dark text-decoration-none">Warga</a>
         <a href="#" class="text-dark text-decoration-none">Petugas</a>
         <a href="#" class="text-dark text-decoration-none">Periode</a>
-        <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
+        {{-- <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>
-        </a>
-
+        </a> --}}
+                      <div class="dropdown">
+          <a href="#" class="d-flex align-items-center justify-content-center bg-success text-white rounded-circle text-decoration-none dropdown-toggle"
+            id="dropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            style="width: 36px; height: 36px; font-weight: bold;">
+            M
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownProfile">
+            <li><a class="dropdown-item" href="#">Profil</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
