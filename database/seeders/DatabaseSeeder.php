@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Sajidan',
             'username' => 'sajidan',
             'password' => bcrypt('sajidan123'),
+            'foto' => 'firdaus sayang amel'
         ]);
     }
 }
