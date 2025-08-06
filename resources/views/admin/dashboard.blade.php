@@ -2,7 +2,7 @@
 @section('content')
 <body class="bg-light">
   <div class="container py-4">
-    <h2 class="mb-4 fw-semibold">Dashboard</h2>
+    <h2 class="mb-4 fw-semibold">Dashboard Admin</h2>
     <div class="row g-4">
 
       <div class="col-md-4">
