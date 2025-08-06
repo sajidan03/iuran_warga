@@ -53,7 +53,7 @@ class AdminController extends Controller
         'role' => $request->role,
         'status' => $request->has('is_active') ? 1 : 0,
     ]);
-    return redirect()->back()->with('success', 'User berhasil ditambahkan!');
+    return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');
     }
 
     public function userTambahView(){
