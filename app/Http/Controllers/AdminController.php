@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\officer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,5 +101,9 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
+    }
+    public function officersView(){
+        $officers = User::where('user')->get();
+        return view('admin.officers', compact('officers'));
     }
 }

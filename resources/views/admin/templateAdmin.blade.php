@@ -23,7 +23,7 @@
 
       <div class="d-flex align-items-center gap-3">
         <a href="{{ route('users.index') }}" class="text-dark text-decoration-none">Pengguna</a>
-        <a href="#" class="text-dark text-decoration-none">Warga</a>
+        <a href="{{ route('officers.index') }}" class="text-dark text-decoration-none">Warga</a>
         <a href="#" class="text-dark text-decoration-none">Petugas</a>
         <a href="#" class="text-dark text-decoration-none">Periode</a>
         <a href="#" class="text-dark text-decoration-none">Pembayaran</a>
