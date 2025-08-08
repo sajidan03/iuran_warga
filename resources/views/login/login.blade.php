@@ -80,22 +80,20 @@
   <!-- Left Panel -->
   <div class="left-panel text-center">
     <img src="https://buserekspose.com/wp-content/uploads/2023/06/IMG-20230619-WA0122.jpg" alt="Exam Illustration" class="mb-4" style="max-width: 300px;">
-    <h2 class="fw-bold">Exam Mastery Hub</h2>
-    <p>Unleash your academic success with Exam Mastery Hub's Exam Excellence Platform.</p>
+    <h2 class="fw-bold">Kaswarga</h2>
+    <p>.</p>
   </div>
 
   <!-- Right Panel -->
   <div class="right-panel">
     <!-- Logo Kaswarga -->
-    <div class="d-flex align-items-center gap-1 mb-4 justify-content-center">
+    <div class="d-flex align-items-center gap-1 mb-4">
       <div class="bg-success text-white fw-bold rounded-circle d-flex align-items-center justify-content-center"
            style="width: 56px; height: 56px; font-size: 1.5rem;">
         K
       </div>
-      <span class="fw-bold" style="font-size: 1.8rem;">aswarga</span>
+      <span class="fw-bold" style="font-size: 1.8rem; margin-bottom: 4px">aswarga</span>
     </div>
-
-    <!-- Login Form -->
     <div class="login-title">Sign In to Kaswarga</div>
     <form method="POST" action="/login">
       @csrf
