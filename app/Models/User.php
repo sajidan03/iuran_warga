@@ -51,6 +51,6 @@ class User extends Authenticatable
     }
     public function officer()
     {
-        return $this->hasOne(officer::class, 'iduser');
+        return $this->hasOne(officer::class, 'id_user', 'id');
     }
 }

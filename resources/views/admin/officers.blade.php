@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-primary">Cari</button>
         </div>
         <div class="col-auto">
-            <a href="{{ route('user.tambah') }}" class="btn btn-success">+ Tambah Pengguna</a>
+            <a href="{{ route('officers.tambah') }}" class="btn btn-success">+ Tambah Pengguna</a>
         </div>
     </form>
 
@@ -25,13 +25,13 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($officers as $officer)
+                @forelse ($officers as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->id_user }}</td>
+                    <td>{{ $user->user->id }}</td>
+                    <td>{{ $user->user->name}}</td>
                     <td class="text-center">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('users.delete', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
+                        <a href="{{ route('users.edit', $user->user->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('users.delete', $user->user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
                             @csrf
                             <button class="btn btn-sm btn-danger">Hapus</button>
                         </form>

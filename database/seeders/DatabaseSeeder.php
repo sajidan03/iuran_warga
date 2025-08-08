@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('sajidan123'),
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
+            'role' => 'admin',
             // 'foto' => 'sajidan.png'
         ]
     );

@@ -26,3 +26,5 @@ Route::post('/user/add/user', [AdminController::class,'userTambah'])->name('user
 Route::post('/user/delete/{id}', [AdminController::class, 'userDelete'])->name('users.delete')->middleware('auth');
 
 Route::get('/officers', [AdminController::class, 'officersView'])->name('officers.index')->middleware('auth');
+Route::get('/officers/add', [AdminController::class, 'officerTambahView'])->name('officers.tambah')->middleware('auth');
+Route::post('/officers/add', [AdminController::class, 'officerTambah'])->name('officers.tambah.post')->middleware('auth');
