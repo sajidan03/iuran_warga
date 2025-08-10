@@ -10,4 +10,7 @@ class WargaController extends Controller
     {
         return view('warga.dashboard');
     }
+    public function tagihanWarga(){
+        return view('warga.payment');
+    }
 }

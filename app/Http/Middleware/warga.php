@@ -17,7 +17,7 @@ class warga
     public function handle(Request $request, Closure $next): Response
     {
           if(Auth::check()){
-            if(Auth::user()->level == 'member'){
+            if(Auth::user()->level == 'warga'){
                 return $next($request);
             }
 

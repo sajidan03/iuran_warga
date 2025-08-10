@@ -22,7 +22,7 @@
       </div>
 
       <div class="d-flex align-items-center gap-3">
-        <a href="{{ route('') }}" class="text-dark text-decoration-none">Tagihan</a>
+        <a href="{{ route('warga.tagihan') }}" class="text-dark text-decoration-none">Tagihan</a>
         {{-- <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>
