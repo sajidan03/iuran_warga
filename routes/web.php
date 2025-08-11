@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DuesCategoryController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +25,6 @@ Route::post('/user/edit/{id}', [AdminController::class, 'userEdit'])->name('user
 Route::get('/user/add/user', [AdminController::class,'userTambahView'])->name('user.tambah')->middleware('auth');
 Route::post('/user/add/user', [AdminController::class,'userTambah'])->name('user.tambah.post')->middleware('auth');
 Route::post('/user/delete/{id}', [AdminController::class, 'userDelete'])->name('users.delete')->middleware('auth');
+Route::get('/warga', [WargaController::class, 'wargaAdmin'])->name('warga.index');
+Route::get('/officer', [PetugasController::class, 'officerAdmin'])->name('officer.index');
+Route::resource('/jenisiuran', DuesCategoryController::class);
