@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\officer;
+use App\Models\payment;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('sajidan123'),
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
+            'role' => 'admin',
             // 'foto' => 'sajidan.png'
         ]
     );
@@ -28,7 +31,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123'),
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
+            'role' => 'warga',
             // 'foto' => 'tangkal.jpg'
+        ]);
+        officer::create([
+            'id_user' => '1',
+        ]);
+        payment::create([
+            'id_user' => '1',
+            'nominal' => '10000',
+            'period' => 'bulanan',
+            'id_petugas'=> '1',
         ]);
     }
 }

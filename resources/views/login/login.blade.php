@@ -77,16 +77,13 @@
 </head>
 <body>
 
-  <!-- Left Panel -->
   <div class="left-panel text-center">
     <img src="https://buserekspose.com/wp-content/uploads/2023/06/IMG-20230619-WA0122.jpg" alt="Exam Illustration" class="mb-4" style="max-width: 300px;">
     <h2 class="fw-bold">Kaswarga</h2>
     <p>.</p>
   </div>
 
-  <!-- Right Panel -->
   <div class="right-panel">
-    <!-- Logo Kaswarga -->
     <div class="d-flex align-items-center gap-1 mb-4">
       <div class="bg-success text-white fw-bold rounded-circle d-flex align-items-center justify-content-center"
            style="width: 56px; height: 56px; font-size: 1.5rem;">
@@ -97,12 +94,11 @@
     <div class="login-title">Sign In to Kaswarga</div>
     <form method="POST" action="/login">
       @csrf
+      <p style="margin-bottom: 4px">Username</p>
       <input type="text" name="username" class="form-control" placeholder="Username or email" required>
+      <p style="margin-bottom: 4px">Password</p>
       <input type="password" name="password" class="form-control" placeholder="Password" required>
 
-      {{-- <div class="d-flex justify-content-end mb-3">
-        <a href="/forgot-password" class="text-small">Forgot password?</a>
-      </div> --}}
 
       <button type="submit" class="btn btn-login w-100">Masuk</button>
     </form>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('id_user');
             $table->string('period');
             $table->integer('nominal');
-            $table->string('petugas');
+            $table->integer('id_petugas');
         });
     }
 

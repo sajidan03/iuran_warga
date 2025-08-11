@@ -18,4 +18,8 @@ class WargaController extends Controller
 
         return view('admin.warga', compact('warga'));
     }
+    public function tagihanWarga(){
+        return view('warga.payment');
+    }
+
 }

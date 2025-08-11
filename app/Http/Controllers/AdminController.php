@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\officer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,5 +101,24 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
+    }
+    public function officersView(){
+        $officers = officer::with('user')->get();
+        return view('admin.officers', compact('officers'));
+    }
+    public function officerTambah(Request $request){
+        $request->validate([
+            'id_user' => 'required|exists:users,id',
+        ]);
+
+        officer::create([
+            'id_user' => $request->id_user,
+        ]);
+        return redirect()->route('officers.index')->with('success', 'Petugas berhasil ditambahkan!');
+    }
+
+    public function officerTambahView(){
+        $users['users'] = User::all();
+        return view('admin.tambah.pegawai', $users);
     }
 }
