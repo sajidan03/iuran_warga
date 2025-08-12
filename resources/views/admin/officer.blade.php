@@ -1,4 +1,4 @@
-@extends('admin.templateAdmin')
+{{-- @extends('admin.templateAdmin')
 @section('content')
 <div class="container py-4">
     <h2 class="mb-4 fw-semibold">Data Officer</h2>
@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-primary">Cari</button>
         </div>
         <div class="col-auto">
-            <a href="{{ route('user.tambah') }}" class="btn btn-success">+ Tambah Officer</a>
+            <a href="{{ route('officers.tambah') }}" class="btn btn-success">+ Tambah Officer</a>
         </div>
     </form>
 
@@ -54,4 +54,4 @@
         </table>
     </div>
 </div>
-@endsection
+@endsection --}}

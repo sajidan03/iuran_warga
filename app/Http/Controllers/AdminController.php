@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\officer;
 use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,11 @@ class AdminController extends Controller
     }
     public function userEditView($id)
     {
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back();
+        }
         $user = User::findOrFail($id);
         return view('admin.edit.user', compact('user'));
     }
@@ -58,9 +64,13 @@ class AdminController extends Controller
     }
 
 
-    public function userEdit(Request $request, $id)
-{
-    $request->validate([
+    public function userEdit(Request $request, $id){
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            return redirect()->back();
+        }
+         $request->validate([
         'name' => 'required|string|max:255',
         'username' => 'required|string|max:255|unique:users,username,' . $id,
         'phone' => 'nullable|string|max:20',
@@ -68,9 +78,7 @@ class AdminController extends Controller
         'role' => 'required|in:admin,warga',
         'password' => 'nullable',
     ]);
-
     $user = User::findOrFail($id);
-
     $user->name = $request->name;
     $user->username = $request->username;
     $user->phone = $request->phone;
@@ -81,17 +89,9 @@ class AdminController extends Controller
     if ($request->password) {
         $user->password = bcrypt($request->password);
     }
-
-    // if ($request->hasFile('photo')) {
-    //     if ($user->photo && Storage::exists('public/' . $user->photo)) {
-    //         Storage::delete('public/' . $user->photo);
-    //     }
-    //     $file = $request->file('photo')->store('user_photos', 'public');
-    //     $user->photo = $file;
-    // }
     $user->save();
     return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
-}
+   }
     public function userTambahView(){
         $users['users'] = User::all();
         return view('admin.tambah.user', $users);

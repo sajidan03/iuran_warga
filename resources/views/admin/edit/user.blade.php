@@ -40,7 +40,7 @@
 
 <title>Edit User</title>
 <div class="container">
-    <form id="editUserForm" action="{{ route('users.edit', $user->id) }}" method="POST" enctype="multipart/form-data">
+    <form id="editUserForm" action="{{ route('users.edit', Crypt::encrypt($user->id)) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="form-container">

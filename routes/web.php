@@ -30,7 +30,7 @@ Route::get('/user/add/user', [AdminController::class,'userTambahView'])->name('u
 Route::post('/user/add/user', [AdminController::class,'userTambah'])->name('user.tambah.post')->middleware('auth');
 Route::post('/user/delete/{id}', [AdminController::class, 'userDelete'])->name('users.delete')->middleware('auth');
 Route::get('/warga', [WargaController::class, 'wargaAdmin'])->name('warga.index');
-Route::get('/officer', [PetugasController::class, 'officerAdmin'])->name('officer.index');
+// Route::get('/officer', [PetugasController::class, 'officerAdmin'])->name('officer.index');
 // Route::resource('/jenisiuran', DuesCategoryController::class);
 Route::get('/officers', [AdminController::class, 'officersView'])->name('officers.index')->middleware('auth');
 Route::get('/officers/add', [AdminController::class, 'officerTambahView'])->name('officers.tambah')->middleware('auth');

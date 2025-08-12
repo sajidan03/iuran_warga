@@ -39,8 +39,8 @@
                     <td>{{ $user->role }}</td>
 
                     <td class="text-center">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('users.delete', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
+                        <a href="{{ route('users.edit', Crypt::encrypt($user->id)) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('users.delete', Crypt::encrypt($user->id)) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin hapus?')">
                             @csrf
                             <button class="btn btn-sm btn-danger">Hapus</button>
                         </form>
