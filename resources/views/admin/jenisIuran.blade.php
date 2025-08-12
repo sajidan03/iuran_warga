@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3 class="mb-0">Jenis Iuran</h3>
         <div>
-            <a href="#" class="btn btn-success">+ Buat Iuran</a>
+            <a href="{{ route('admin.tambahjenisIuran') }}" class="btn btn-success">+ Buat Iuran</a>
         </div>
     </div>
 

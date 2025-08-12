@@ -25,10 +25,10 @@
         <a href="{{ route('users.index') }}" class="text-dark text-decoration-none">Pengguna</a>
         <a href="{{ route('warga.index') }}" class="text-dark text-decoration-none">Warga</a>
         <a href="{{ route('officer.index') }}" class="text-dark text-decoration-none">Petugas</a>
-        <a href="/jenisiuran" class="text-dark text-decoration-none">Jenis Iuran</a>
-        <a href="#" class="text-dark text-decoration-none">Anggota Iuran</a>
-        <a href="#" class="text-dark text-decoration-none">Periode</a>
-        <a href="#" class="text-dark text-decoration-none">Pembayaran</a>
+        <a href="{{ route('admin.jenisIuran.index') }}" class="text-dark text-decoration-none">Jenis Iuran</a>
+        <a href="{{ route('dues_members.index') }}" class="text-dark text-decoration-none">Anggota Iuran</a>
+        {{-- <a href="#" class="text-dark text-decoration-none">Periode</a>  --}}
+        <a href="{{ route('payments.index') }}" class="text-dark text-decoration-none">Pembayaran</a>
         {{-- <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>
