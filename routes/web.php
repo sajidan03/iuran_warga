@@ -57,6 +57,9 @@ Route::resource('payments', PaymentController::class);
 
 Route::prefix('officer')->group(function () {
     Route::get('dashboard', [PetugasController::class, 'index'])->name('officer.dashboard');
+    Route::get('payment', [PetugasController::class, 'payment'])->name('officer.payment');
+    Route::post('payment/{id}', [PetugasController::class, 'payment_detail'])->name('officer.payment.detail');
+    Route::get('payment/{id}', [PetugasController::class, 'payment_detail'])->name('officer.payment.detail');
     Route::post('bayar/{member}', [PetugasController::class, 'bayar'])->name('officer.bayar');
 });
 
