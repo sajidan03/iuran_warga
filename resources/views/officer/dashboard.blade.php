@@ -1,4 +1,4 @@
-@extends('admin.templateAdmin')
+@extends('officer.templateOfficer')
 
 @section('content')
 <div class="container mt-4">

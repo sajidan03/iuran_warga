@@ -7,6 +7,10 @@
     <form action="{{ route('admin.jenisIuran.update', $category->id) }}" method="POST">
         @csrf
         <div class="mb-3">
+            <label>Nama Jenis Iuran</label>
+            <input type="text" name="name" class="form-control" value="{{ $category->name }}" required>
+        </div>
+        <div class="mb-3">
             <label>Periode</label>
             <select name="period" class="form-control" required>
                 <option value="mingguan" {{ $category->period == 'mingguan' ? 'selected' : '' }}>Mingguan</option>

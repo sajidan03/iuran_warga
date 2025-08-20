@@ -7,6 +7,10 @@
     <form action="{{ route('admin.jenisIuran.store') }}" method="POST">
         @csrf
         <div class="mb-3">
+            <label>Nama Jenis Iuran</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
             <label>Periode</label>
             <select name="period" class="form-control" required>
                 <option value="">-- Pilih --</option>

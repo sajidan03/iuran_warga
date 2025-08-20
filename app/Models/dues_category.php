@@ -12,5 +12,5 @@ use Illuminate\Database\Eloquent\Model;
 class dues_category extends Model
 {
     protected $table = 'dues_categories';
-    protected $fillable = ['period', 'nominal', 'status'];
+    protected $fillable = ['name','period', 'nominal', 'status'];
 }

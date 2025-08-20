@@ -32,11 +32,16 @@ Route::post('/user/delete/{id}', [AdminController::class, 'userDelete'])->name('
 Route::get('/warga', [WargaController::class, 'wargaAdmin'])->name('warga.index');
 // Route::get('/officer', [PetugasController::class, 'officerAdmin'])->name('officer.index');
 // Route::resource('/jenisiuran', DuesCategoryController::class);
-Route::get('/officers', [AdminController::class, 'officersView'])->name('officers.index')->middleware('auth');
-Route::get('/officers/add', [AdminController::class, 'officerTambahView'])->name('officers.tambah')->middleware('auth');
-Route::post('/officers/add', [AdminController::class, 'officerTambah'])->name('officers.tambah.post')->middleware('auth');
+// Route::get('/officers', [AdminController::class, 'officersView'])->name('officers.index')->middleware('auth');
+// Route::get('/officers/add', [AdminController::class, 'officerTambahView'])->name('officers.tambah')->middleware('auth');
+// Route::post('/officers/add', [AdminController::class, 'officerTambah'])->name('officers.tambah.post')->middleware('auth');
 // Route::post('/admin/jenis-iuran/tambah', [DuesCategoryController::class, 'store'])->name('admin.tambah.jenisIuran');
 // Route::get('/admin/jenis-iuran/create', [DuesCategoryController::class, 'create'])->name('admin.jenisIuran.create');
+
+Route::get('/officers', [PetugasController::class, 'officerAdmin'])->name('officers.index');
+Route::get('/officers/create', [PetugasController::class, 'create'])->name('officers.create');
+Route::post('/officers', [PetugasController::class, 'store'])->name('officers.store');
+Route::delete('/officers/{officer}', [PetugasController::class, 'destroy'])->name('officers.destroy');
 
 Route::prefix('admin')->group(function () {
     Route::get('jenis-iuran', [DuesCategoryController::class, 'index'])->name('admin.jenisIuran.index');

@@ -1,4 +1,4 @@
-@extends('admin.templateAdmin')
+{{-- @extends('admin.templateAdmin')
 
 @section('content')
 <div class="container py-4">
@@ -62,4 +62,4 @@
         {{ $categories->links() }}
     </div>
 </div>
-@endsection
+@endsection --}}
