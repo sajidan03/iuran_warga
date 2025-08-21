@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
-Route::get('/warga/dashboard', [WargaController::class, 'dashboard'])->name('warga.dashboard')->middleware('auth');
+Route::get('/warga/dashboard', [WargaController::class, 'tagihanWarga'])->name('warga.dashboard')->middleware('auth');
 Route::get('/warga/payment', [WargaController::class, 'tagihanWarga'])->name('warga.tagihan')->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, 'userView'])->name('admin.dashboard')->middleware('auth');
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
