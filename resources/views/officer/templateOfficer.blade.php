@@ -28,7 +28,7 @@
         <a href="{{ route('admin.jenisIuran.index') }}" class="text-dark text-decoration-none">Jenis Iuran</a>
         <a href="{{ route('dues_members.index') }}" class="text-dark text-decoration-none">Anggota Iuran</a> --}}
         {{-- <a href="#" class="text-dark text-decoration-none">Periode</a>  --}}
-        <a href="{{ route('payments.index') }}" class="text-dark text-decoration-none">Pembayaran</a>
+        <a href="{{ route('officer.dashboard') }}" class="text-dark text-decoration-none">Pembayaran</a>
         {{-- <a href="/login" class="btn btn-success d-flex align-items-center gap-2">
           Masuk
           <i class="fas fa-arrow-right"></i>

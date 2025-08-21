@@ -18,7 +18,7 @@ Route::get('/login', [LoginController::class, 'loginView'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/warga/dashboard', [WargaController::class, 'dashboard'])->name('warga.dashboard')->middleware('auth');
 Route::get('/warga/payment', [WargaController::class, 'tagihanWarga'])->name('warga.tagihan')->middleware('auth');
-Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin'])->name('admin.dashboard')->middleware('auth');
+Route::get('/admin/dashboard', [AdminController::class, 'userView'])->name('admin.dashboard')->middleware('auth');
 Route::get('/register', [LoginController::class, 'showRegister'])->name('register');
 Route::post('/register', [LoginController::class, 'register'])->name('register.post');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
@@ -56,7 +56,7 @@ Route::resource('dues_members', DuesMemberController::class);
 Route::resource('payments', PaymentController::class);
 
 Route::prefix('officer')->group(function () {
-    Route::get('dashboard', [PetugasController::class, 'index'])->name('officer.dashboard');
+    Route::get('dashboard', [PetugasController::class, 'payment'])->name('officer.dashboard');
     Route::get('payment', [PetugasController::class, 'payment'])->name('officer.payment');
     Route::post('payment/{id}', [PetugasController::class, 'payment_detail'])->name('officer.payment.detail');
     Route::get('payment/{id}', [PetugasController::class, 'payment_detail'])->name('officer.payment.detail');
