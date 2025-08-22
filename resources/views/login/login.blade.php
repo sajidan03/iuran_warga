@@ -14,7 +14,7 @@
     }
 
     .left-panel {
-      background-color: #e6f0eb;
+      background-color: #198754;
       flex: 1;
       display: flex;
       align-items: center;
@@ -43,12 +43,12 @@
     }
 
     .btn-login {
-      background-color: #5c8d7a;
+      background-color: #198754;
       color: white;
     }
 
     .btn-login:hover {
-      background-color: #4c7b69;
+      background-color: #198754;
     }
 
     .divider {
@@ -79,7 +79,7 @@
 
   <div class="left-panel text-center">
     <img src="https://buserekspose.com/wp-content/uploads/2023/06/IMG-20230619-WA0122.jpg" alt="Exam Illustration" class="mb-4" style="max-width: 300px;">
-    <h2 class="fw-bold">Kaswarga</h2>
+    <h2 class="fw-bold text-white">Kaswarga</h2>
     <p>.</p>
   </div>
 
