@@ -3,24 +3,28 @@
 @section('content')
 <div class="container mt-4">
     <h3>Pembayaran</h3>
+    <br>
+    <h4>Daftar Pembayaran</h4>
+    <hr>
+    Total Tagihan: {{ $jumlah_tagihan }}<br>
+    Nominal Tagihan: {{ $nominal_tagihan }}
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
-            <th>Nama Warga</th>
+            <th>Pembayaran ke-</th>
             <th>Periode Pembayaran</th>
-            <th>Nominal Pemyaran</th>
+            <th>Nominal Pembyaran</th>
+            <th>Tanggal Bayar</th>
             <th>Aksi</th>
         </tr>
-        @foreach ($member as $item)
+        @foreach ($payment as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->user->name }}</td>
-            <td>{{ $item->duesCategory->period }}</td>
-            <td>{{ $item->duesCategory->nominal }}</td>
-            <td><a href="{{ route('officer.payment.detail', $item->user->id) }}" class="btn btn-sm btn-primary">Lakukan Pembayaran</a></td>
+            <td>{{ $item->period }}</td>
+            <td>{{ $item->nominal }}</td>
+            <td>{{ $item->created_at }}</td>
+            <td><a href="route" class="btn btn-sm btn-danger">Cancel</a></td>
         </tr>
         @endforeach
     </table>
 </div>
 @endsection
-
