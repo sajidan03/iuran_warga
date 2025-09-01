@@ -12,6 +12,12 @@
         <input type="submit" value="Bayar"  name="bayar" class="btn btn-sm btn-primary">
     </form>
     <br>
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+<br>
     <h4>Daftar Pembayaran</h4>
     <hr>
     Total Tagihan: {{ $jumlah_tagihan }}
@@ -31,7 +37,7 @@
             <td>{{ $item->period }}</td>
             <td>{{ $item->nominal }}</td>
             <td>{{ $item->created_at }}</td>
-            <td><a href="route" class="btn btn-sm btn-danger">Cancel</a></td>
+            <td><a href="{{ route('admin.dashboard') }}" class="btn btn-sm btn-danger">Cancel</a></td>
         </tr>
         @endforeach
     </table>

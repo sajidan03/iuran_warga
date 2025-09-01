@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Sajidan',
             'username' => 'sajidan',
-            'password' => bcrypt('sajidan123'),
+            'password' => bcrypt('123'),
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
             'role' => 'admin',
@@ -43,14 +43,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         officer::create([
-            'id_user' => '3', // harusnya id user officer (hamdi), bukan '1'
-        ]);
-
-        payment::create([
-            'id_user'   => '2', // warga (Dhiya)
-            'nominal'   => '10000',
-            'period'    => 'bulanan',
-            'id_petugas'=> '1', // officer yang baru dibuat
+            'id_user' => '3',
         ]);
     }
 }

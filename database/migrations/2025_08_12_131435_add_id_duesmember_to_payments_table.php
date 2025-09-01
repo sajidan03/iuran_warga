@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('payments', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_duesmember')->nullable(); // sesuaikan tipe data
-        });
+        // Schema::table('payments', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('id_duesmember')->nullable();
+        // });
     }
 
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('payments', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('payments', function (Blueprint $table) {
+        //     //
+        // });
     }
 };

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class PetugasController extends Controller
 {
@@ -76,7 +77,7 @@ class PetugasController extends Controller
             'id_user' => $member->id_user,
             'period' => $bulanIni,
             'nominal' => $member->category->nominal,
-            // 'petugas' => auth()->user()->name,
+            'petugas' => auth()->user()->name,
         ]);
 
         return back()->with('success', 'Pembayaran berhasil dicatat.');
@@ -88,58 +89,108 @@ class PetugasController extends Controller
         return view('officer.payment', $data);
     }
 
-    public function payment_detail(Request $request, $id){
-        $member= dues_members::where('id_user',$id)->first();
-        $payment = Payment::where('id_user', $member->id_user)->get();
-
-        $tanggalAwal = "01-08-2025";
-        $tanggalAkhir = date('d-m-Y');
-        $jumlahMinggu = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir);
-
-        if($payment->count() > $jumlahMinggu){
-            $jumlah_tagihan = "Tidak Ada";
-            $nominal_tagihan = 0;
-        }else{
-            $jumlah_tagihan = $jumlahMinggu - $payment->count() . " kali pembayaran";
-            $nominal_tagihan = ($jumlahMinggu - $payment->count()) * $member->duesCategory->nominal;
-        }
-
-        if($request->bayar){
-            $nominal_bayar = $request->nominal;
-            $nominal_kategori = $member->duesCategory->nominal;
-
-            $jumlah_bayar = $nominal_bayar / $nominal_kategori;
-            for($i = 0; $i < $jumlah_bayar; $i++){
-                Payment::create([
-                    'id_user' => $member->id_user,
-                    'nominal' => $nominal_kategori,
-                    'period' => $member->duesCategory->period,
-                    'id_petugas' => Auth::user()->id
-                ]);
-            }
-
-        }
-
-        $data['jumlah_tagihan'] = $jumlah_tagihan;
-        $data['nominal_tagihan'] = $nominal_tagihan;
-        $data['payment'] = $payment;
-        $data['member'] = $member;
-        return view('officer.payment_detail', $data);
+public function payment_detail(Request $request, $id)
+{
+    try {
+        $id = Crypt::decrypt($id);
+    } catch (DecryptException $e) {
+        return back()->with('error', 'ID tidak valid atau sudah rusak!');
     }
 
-    function hitungJumlahMinggu($tanggalAwal, $tanggalAkhir) {
-        $awal = new DateTime($tanggalAwal);
-        $akhir = new DateTime($tanggalAkhir);
+    $member = dues_members::where('id_user', $id)->first();
+    if (!$member) {
+        return back()->with('error', 'Data anggota tidak ditemukan!');
+    }
 
-        if ($akhir < $awal) {
-            return "Tanggal akhir harus lebih besar dari tanggal awal!";
+    $payment = Payment::where('id_user', $member->id_user)->get();
+
+    $tanggalAwal = "01-08-2025";
+    $tanggalAkhir = date('d-m-Y');
+
+    $period = $member->duesCategory->period;
+    if ($period == 'mingguan') {
+        $jumlahPeriode = $this->hitungJumlahMinggu($tanggalAwal, $tanggalAkhir);
+    } elseif ($period == 'bulanan') {
+        $jumlahPeriode = $this->hitungJumlahBulan($tanggalAwal, $tanggalAkhir);
+    } else {
+        $jumlahPeriode = $this->hitungJumlahTahun($tanggalAwal, $tanggalAkhir);
+    }
+
+    if ($payment->count() >= $jumlahPeriode) {
+        $jumlah_tagihan = "Tidak Ada";
+        $nominal_tagihan = 0;
+    } else {
+        $jumlah_tagihan = ($jumlahPeriode - $payment->count()) . " kali pembayaran";
+        $nominal_tagihan = ($jumlahPeriode - $payment->count()) * $member->duesCategory->nominal;
+    }
+
+    if ($request->bayar) {
+        $nominal_bayar = (int) $request->nominal;
+        $nominal_kategori = $member->duesCategory->nominal;
+
+        if ($nominal_bayar <= 0) {
+            return back()->with('error', 'Nominal pembayaran tidak boleh 0 atau negatif!');
         }
 
-        $selisih = $awal->diff($akhir)->days;
+        if ($nominal_bayar % $nominal_kategori != 0) {
+            return back()->with('error', 'Nominal pembayaran harus kelipatan dari ' . number_format($nominal_kategori, 0, ',', '.'));
+        }
 
-        $jumlahMinggu = ceil($selisih / 7);
+        $jumlah_bayar = $nominal_bayar / $nominal_kategori;
 
-        return $jumlahMinggu;
+        for ($i = 0; $i < $jumlah_bayar; $i++) {
+            Payment::create([
+                'id_user'       => $member->id_user,
+                'nominal'       => $nominal_kategori,
+                'period'        => $member->duesCategory->period,
+                'id_petugas'    => Auth::user()->id,
+                'id_duesmember' => $member->id,
+            ]);
+        }
+
+        return back()->with('success', 'Pembayaran berhasil disimpan!');
     }
+
+    $data['jumlah_tagihan'] = $jumlah_tagihan;
+    $data['nominal_tagihan'] = $nominal_tagihan;
+    $data['payment'] = $payment;
+    $data['member'] = $member;
+
+    return view('officer.payment_detail', $data);
+}
+
+function hitungJumlahMinggu($tanggalAwal, $tanggalAkhir)
+{
+    $awal = new DateTime($tanggalAwal);
+    $akhir = new DateTime($tanggalAkhir);
+
+    if ($akhir < $awal) return 0;
+
+    $selisih = $awal->diff($akhir)->days;
+    return ceil($selisih / 7);
+}
+
+function hitungJumlahBulan($tanggalAwal, $tanggalAkhir)
+{
+    $awal = new DateTime($tanggalAwal);
+    $akhir = new DateTime($tanggalAkhir);
+
+    if ($akhir < $awal) return 0;
+
+    $selisih = $awal->diff($akhir);
+    return ($selisih->y * 12) + $selisih->m + 1; // +1 biar termasuk bulan berjalan
+}
+
+function hitungJumlahTahun($tanggalAwal, $tanggalAkhir)
+{
+    $awal = new DateTime($tanggalAwal);
+    $akhir = new DateTime($tanggalAkhir);
+
+    if ($akhir < $awal) return 0;
+
+    $selisih = $awal->diff($akhir);
+    return $selisih->y + 1; // +1 biar termasuk tahun berjalan
+}
 
 }
+

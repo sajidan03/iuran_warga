@@ -17,15 +17,16 @@
             <td>{{ $item->user->name }}</td>
             <td>{{ $item->duesCategory->period }}</td>
             <td>{{ $item->duesCategory->nominal }}</td>
-            <td><a href="{{ route('officer.payment.detail', $item->user->id) }}" class="btn btn-sm btn-primary">Lakukan Pembayaran</a></td>
+            {{-- <td><a href="{{ route('officer.payment.detail', $item->user->id) }}" class="btn btn-sm btn-primary">Lakukan Pembayaran</a></td> --}}
+                      <td>
+    <a href="{{ route('officer.payment.detail', Crypt::encrypt($item->user->id)) }}"
+       class="btn btn-sm btn-primary">
+       Lakukan Pembayaran
+    </a>
+</td>
+
         </tr>
         @endforeach
     </table>
 </div>
 @endsection
-          {{-- <td>
-    <a href="{{ route('officer.payment.detail', Crypt::encrypt($item->user->id)) }}"
-       class="btn btn-sm btn-primary">
-       Lakukan Pembayaran
-    </a>
-</td> --}}

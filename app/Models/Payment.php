@@ -18,7 +18,8 @@ class Payment extends Model
         'id_user',
         'period',
         'nominal',
-        'petugas'
+        'id_petugas',
+        'id_duesmember',
     ];
 
     public function user()
