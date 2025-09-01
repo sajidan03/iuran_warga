@@ -138,16 +138,18 @@ public function payment_detail(Request $request, $id)
 
         $jumlah_bayar = $nominal_bayar / $nominal_kategori;
 
-        for ($i = 0; $i < $jumlah_bayar; $i++) {
-            Payment::create([
-                'id_user'       => $member->id_user,
-                'nominal'       => $nominal_kategori,
-                'period'        => $member->duesCategory->period,
-                'id_petugas'    => Auth::user()->id,
-                'id_duesmember' => $member->id,
-            ]);
-        }
+        $pembayaranKeTerakhir = Payment::where('id_user', $member->id_user)->count();
 
+    for ($i = 1; $i <= $jumlah_bayar; $i++) {
+        Payment::create([
+            'id_user'        => $member->id_user,
+            'nominal'        => $nominal_kategori,
+            'period'         => $member->duesCategory->period,
+            'id_petugas'     => Auth::user()->id,
+            'id_duesmember'  => $member->id,
+            'total_bayar'  => $pembayaranKeTerakhir + $i,
+        ]);
+    }
         return back()->with('success', 'Pembayaran berhasil disimpan!');
     }
 

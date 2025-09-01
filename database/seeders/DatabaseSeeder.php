@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\officer;
 use App\Models\payment;
 use App\Models\User;
+use App\Models\dues_members;
+use App\Models\dues_category;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -44,6 +46,16 @@ class DatabaseSeeder extends Seeder
 
         officer::create([
             'id_user' => '3',
+        ]);
+        dues_category::create([
+            'name' => 'Umrah',
+            'period' => 'Mingguan',
+            'nominal' => 10000,
+            'status' => 'active',
+        ]);
+        dues_members::create([
+            'id_user' => 2,
+            'id_duescategory' => 1,
         ]);
     }
 }

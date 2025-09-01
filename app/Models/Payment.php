@@ -20,6 +20,7 @@ class Payment extends Model
         'nominal',
         'id_petugas',
         'id_duesmember',
+        'total_bayar',
     ];
 
     public function user()

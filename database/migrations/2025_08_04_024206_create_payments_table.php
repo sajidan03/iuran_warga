@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('nominal');
             $table->integer('id_petugas')->nullable();
             $table->integer('id_duesmember')->nullable();
+            $table->integer('total_bayar')->nullable();
         });
     }
 

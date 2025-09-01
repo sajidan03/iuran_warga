@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h3>Pembayaran</h3>
-    <form action="{{ route('officer.payment.detail', $member->id_user) }}" method="post">
+    <form action="{{ route('officer.payment.detail', Crypt::encrypt($member->id_user)) }}" method="post">
         @csrf
         Nama Warga: {{ $member->user->name }}<br>
         Nominal Pembayaran:
