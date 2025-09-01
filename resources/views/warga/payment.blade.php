@@ -10,6 +10,7 @@
             <th>Periode Pembayaran</th>
             <th>Nominal Pembayaran</th>
             <th>Tanggal Bayar</th>
+            <th>Petugas</th>
         </tr>
         @foreach ($member as $item)
         <tr>
@@ -17,6 +18,7 @@
             <td>{{ $item->period }}</td>
             <td>{{ $item->nominal }}</td>
             <td>{{ $item->created_at }}</td>
+          <td>{{ $item->id_petugas}}</td>
         </tr>
         @endforeach
     </table>
