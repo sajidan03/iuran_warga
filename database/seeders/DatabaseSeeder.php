@@ -34,6 +34,15 @@ class DatabaseSeeder extends Seeder
             'role' => 'warga',
             // 'foto' => 'tangkal.jpg'
         ]);
+          User::create([
+            'name' => 'Dhiya',
+            'username' => 'hamdi',
+            'password' => bcrypt('123'),
+            'phone' => '085123456789',
+            'address' => 'Jl. Raya No. 123',
+            'role' => 'officer',
+            // 'foto' => 'tangkal.jpg'
+        ]);
         officer::create([
             'id_user' => '1',
         ]);
