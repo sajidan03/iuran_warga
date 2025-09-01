@@ -23,3 +23,9 @@
     </table>
 </div>
 @endsection
+          {{-- <td>
+    <a href="{{ route('officer.payment.detail', Crypt::encrypt($item->user->id)) }}"
+       class="btn btn-sm btn-primary">
+       Lakukan Pembayaran
+    </a>
+</td> --}}

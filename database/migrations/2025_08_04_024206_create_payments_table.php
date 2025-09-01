@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('period');
             $table->integer('nominal');
             $table->integer('id_petugas');
+            $table->string('petugas')->nullable();
         });
     }
 
