@@ -52,19 +52,15 @@ class WargaController extends Controller
     }
 
     function hitungJumlahMinggu($tanggalAwal, $tanggalAkhir) {
-        // Ubah ke format DateTime
         $awal = new DateTime($tanggalAwal);
         $akhir = new DateTime($tanggalAkhir);
 
-        // Pastikan akhir lebih besar dari awal
         if ($akhir < $awal) {
             return "Tanggal akhir harus lebih besar dari tanggal awal!";
         }
 
-        // Hitung selisih hari
         $selisih = $awal->diff($akhir)->days;
 
-        // Hitung jumlah minggu (dibulatkan ke atas)
         $jumlahMinggu = ceil($selisih / 7);
 
         return $jumlahMinggu;
@@ -76,9 +72,13 @@ class WargaController extends Controller
 
         return view('admin.warga', compact('warga'));
     }
-    public function tagihanWarga(){
-        $data['member'] = dues_members::get();
-        return view('warga.payment', $data);
-    }
+public function tagihanWarga()
+{
+    $payments = Payment::whereHas('duesmember', function($q) {
+        $q->where('id_user', auth()->id());
+    })->get();
+
+    return view('warga.payment', ['member' => $payments]);
+}
 
 }

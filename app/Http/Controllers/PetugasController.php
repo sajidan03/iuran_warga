@@ -191,7 +191,7 @@ function hitungJumlahTahun($tanggalAwal, $tanggalAkhir)
     if ($akhir < $awal) return 0;
 
     $selisih = $awal->diff($akhir);
-    return $selisih->y + 1; // +1 biar termasuk tahun berjalan
+    return $selisih->y + 1;
 }
 
 }

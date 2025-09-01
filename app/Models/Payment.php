@@ -22,6 +22,10 @@ class Payment extends Model
         'id_duesmember',
         'total_bayar',
     ];
+public function duesMember()
+{
+    return $this->belongsTo(dues_members::class, 'id_duesmember', 'id');
+}
 
     public function user()
     {

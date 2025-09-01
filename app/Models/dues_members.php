@@ -16,6 +16,9 @@ use HasFactory;
         'id_duescategory',
     ];
 
+    public function payment() {
+        return $this->hasMany(Payment::class, 'id_duesmember', 'id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');
