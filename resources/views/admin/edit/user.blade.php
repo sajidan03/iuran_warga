@@ -111,6 +111,7 @@
                             <select class="form-select" id="jabatan" name="role" required>
                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="warga" {{ $user->role == 'warga' ? 'selected' : '' }}>Warga</option>
+                                <option value="officer" {{ $user->role == 'officer' ? 'selected' : '' }}>Officer</option>
                             </select>
                         </div>
                         <div class="mb-3">

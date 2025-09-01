@@ -114,6 +114,7 @@
                             <select class="form-select" id="jabatan" name="role" required>
                                 <option value="admin">Admin</option>
                                 <option value="warga">Warga</option>
+                                <option value="officer">Officer</option>
                             </select>
                         </div>
                         <div class="mb-3">

@@ -22,9 +22,8 @@ class DatabaseSeeder extends Seeder
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
             'role' => 'admin',
-            // 'foto' => 'sajidan.png'
-        ]
-    );
+        ]);
+
         User::create([
             'name' => 'Dhiya',
             'username' => 'diya',
@@ -32,25 +31,26 @@ class DatabaseSeeder extends Seeder
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
             'role' => 'warga',
-            // 'foto' => 'tangkal.jpg'
         ]);
-          User::create([
-            'name' => 'Dhiya',
+
+        User::create([
+            'name' => 'Hamdi',
             'username' => 'hamdi',
             'password' => bcrypt('123'),
             'phone' => '085123456789',
             'address' => 'Jl. Raya No. 123',
             'role' => 'officer',
-            // 'foto' => 'tangkal.jpg'
         ]);
+
         officer::create([
-            'id_user' => '1',
+            'id_user' => '3', // harusnya id user officer (hamdi), bukan '1'
         ]);
+
         payment::create([
-            'id_user' => '1',
-            'nominal' => '10000',
-            'period' => 'bulanan',
-            'id_petugas'=> '1',
+            'id_user'   => '2', // warga (Dhiya)
+            'nominal'   => '10000',
+            'period'    => 'bulanan',
+            'id_petugas'=> '1', // officer yang baru dibuat
         ]);
     }
 }

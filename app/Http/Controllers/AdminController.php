@@ -42,7 +42,7 @@ class AdminController extends Controller
         'phone' => 'required|string|max:15',
         'address' => 'required|string',
         'password' => 'required|string|confirmed',
-        'role' => 'required|in:admin,warga',
+        'role' => 'required|in:admin,warga,officer',
         'status' => 'required',
     ]);
 
@@ -75,7 +75,7 @@ class AdminController extends Controller
         'username' => 'required|string|max:255|unique:users,username,' . $id,
         'phone' => 'nullable|string|max:20',
         'address' => 'required|string|max:500',
-        'role' => 'required|in:admin,warga',
+        'role' => 'required|in:admin,warga,officer',
         'password' => 'nullable',
     ]);
     $user = User::findOrFail($id);
