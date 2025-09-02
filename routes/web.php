@@ -62,3 +62,6 @@ Route::prefix('officer')->group(function () {
     Route::post('bayar/{member}', [PetugasController::class, 'bayar'])->name('officer.bayar');
 });
 
+Route::delete('/officer/payment/cancel/{id}', [PetugasController::class, 'cancel'])->name('officer.payment.cancel');
+
+

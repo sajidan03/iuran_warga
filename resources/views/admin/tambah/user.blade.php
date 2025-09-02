@@ -11,7 +11,7 @@
             background-color: #fff;
         }
         .form-title {
-            color: #0d6efd;
+            color: #145c40 ;
             margin-bottom: 25px;
             text-align: center;
             font-weight: 600;
@@ -32,15 +32,16 @@
         .action-buttons .btn {
             min-width: 120px;
         }
-        .profile-preview {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #dee2e6;
-            display: block;
-            margin: 0 auto 20px;
-        }
+        .btn-save-custom {
+    background-color: #145c40;
+    border-color: #145c40;
+    color: #fff;
+}
+.btn-save-custom:hover {
+    background-color: #0f3d2e;
+    border-color: #0f3d2e;
+}
+
 </style>
 
 <div class="container-fluid py-4">
@@ -97,18 +98,9 @@
             </div>
 
             <div class="form-section">
-                <h5>Upload Foto Profil</h5>
+                <h5>Informasi Tambahan</h5>
                 <div class="row">
-                    <div class="col-md-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a47e61af-a99d-409b-ada4-7bde3507f0fd.png" alt="Preview foto profil" id="profilePreview" class="profile-preview">
-                        <div class="d-flex justify-content-center">
-                            <input type="file" id="profilePhoto" class="d-none" accept="image/*" name="photo">
-                            <button type="button" class="btn btn-outline-primary btn-sm" id="uploadBtn">
-                                <i class="fas fa-upload me-1"></i>Upload Foto
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="jabatan" class="form-label">Jabatan</label>
                             <select class="form-select" id="jabatan" name="role" required>
@@ -117,6 +109,8 @@
                                 <option value="officer">Officer</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <textarea class="form-control" id="alamat" name="address" rows="2" required></textarea>
@@ -137,9 +131,10 @@
                 <button type="reset" class="btn btn-outline-secondary">
                     <i class="fas fa-undo me-1"></i>Reset
                 </button>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save me-1"></i>Simpan User
-                </button>
+                <button type="submit" class="btn btn-save-custom">
+    <i class="fas fa-save me-1"></i>Simpan User
+</button>
+
             </div>
         </div>
     </form>
@@ -158,22 +153,7 @@
         }
     });
 
-    document.getElementById('uploadBtn').addEventListener('click', function () {
-        document.getElementById('profilePhoto').click();
-    });
 
-    document.getElementById('profilePhoto').addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                document.getElementById('profilePreview').src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // Validasi password JS
     document.getElementById('addUserForm').addEventListener('submit', function (e) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;

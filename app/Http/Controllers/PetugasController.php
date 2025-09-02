@@ -202,5 +202,24 @@ function hitungJumlahTahun($tanggalAwal, $tanggalAkhir)
     return $selisih->y + 1;
 }
 
+
+
+public function cancel($id)
+{
+    $payment = Payment::find($id);
+
+    if (!$payment) {
+        return back()->with('error', 'Data pembayaran tidak ditemukan!');
+    }
+
+    try {
+        $payment->delete();
+        return back()->with('success', 'Pembayaran berhasil dibatalkan!');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Terjadi kesalahan saat membatalkan pembayaran!');
+    }
+}
+
+
 }
 

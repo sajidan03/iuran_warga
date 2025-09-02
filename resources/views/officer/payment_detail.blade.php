@@ -37,7 +37,12 @@
             <td>{{ $item->period }}</td>
             <td>{{ $item->nominal }}</td>
             <td>{{ $item->created_at }}</td>
-            <td><a href="{{ route('admin.dashboard') }}" class="btn btn-sm btn-danger">Cancel</a></td>
+            <td>            <form action="{{ route('officer.payment.cancel', $item->id) }}" method="POST" style="display:inline;">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin mau cancel pembayaran ini?')">Cancel</button>
+</form></td>
+
         </tr>
         @endforeach
     </table>
