@@ -34,7 +34,9 @@
                 </span>
             </td>
             <td>
-                <a href="{{ route('admin.jenisIuran.edit', $c->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                {{-- <a href="{{ route('admin.jenisIuran.edit', $c->id) }}" class="btn btn-warning btn-sm">Edit</a> --}}
+                <a href="{{ route('admin.jenisIuran.edit', Crypt::encrypt($c->id)) }}" class="btn btn-warning btn-sm">Edit</a>
+
                     <form action="{{ route('admin.jenisIuran.delete', $c->id) }}" method="POST" style="display:inline;">
                         @csrf
                         <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus data ini?')">Hapus</button>

@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;

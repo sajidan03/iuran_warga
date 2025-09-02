@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\dues_category;
 use App\Models\DuesCategory;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DuesCategoryController extends Controller
 {
@@ -36,6 +38,11 @@ class DuesCategoryController extends Controller
 
     public function edit($id)
     {
+        try {
+            $id = Crypt::decrypt($id);
+        } catch (DecryptException   $e) {
+            $e->getMessage();
+        }
         $category = dues_category::findOrFail($id);
         return view('admin.jenis-iuran.edit', compact('category'));
     }

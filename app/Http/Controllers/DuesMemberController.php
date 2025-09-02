@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\dues_category;
 use App\Models\dues_members;
 use App\Models\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class DuesMemberController extends Controller
 {
@@ -35,12 +37,21 @@ class DuesMemberController extends Controller
         return redirect()->route('dues_members.index')->with('success', 'Anggota iuran berhasil ditambahkan.');
     }
 
-    public function edit(dues_members $duesMember)
-    {
-        $users = User::where('role', 'warga')->get();
-        $categories = dues_category::all();
-        return view('admin.dues_members.edit', compact('duesMember', 'users', 'categories'));
+   public function edit($id)
+{
+    try {
+        $decrypted = Crypt::decrypt($id);
+    } catch (DecryptException $e) {
+        abort(404);
     }
+
+    $duesMember = dues_members::findOrFail($decrypted);
+
+    $users = User::where('role', 'warga')->get();
+    $categories = dues_category::all();
+
+    return view('admin.dues_members.edit', compact('duesMember', 'users', 'categories'));
+}
 
     public function update(Request $request, dues_members $duesMember)
     {

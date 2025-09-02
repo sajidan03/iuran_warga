@@ -25,7 +25,7 @@
                 <td>{{ ucfirst($member->duesCategory->period) }}</td>
                 <td>Rp{{ number_format($member->duesCategory->nominal) }}</td>
                 <td>
-                    <a href="{{ route('dues_members.edit', $member->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('dues_members.edit', Crypt::encrypt($member->id)) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('dues_members.destroy', $member->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')

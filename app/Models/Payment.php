@@ -28,7 +28,7 @@ public function duesMember()
 }
 public function officer()
 {
-    return $this->belongsTo(officer::class, 'id_officer', 'id');
+    return $this->belongsTo(officer::class, 'id_petugas', 'id');
 }
     public function user()
     {

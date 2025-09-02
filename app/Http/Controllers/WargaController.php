@@ -74,13 +74,13 @@ class WargaController extends Controller
     }
 public function tagihanWarga()
 {
-    $payments = Payment::with(['duesmember', 'officer'])
+    $payments['member'] = Payment::with(['duesMember', 'officer'])
         ->whereHas('duesmember', function($q) {
-            $q->where('id_user', auth()->id());
+            $q->where('id_user', Auth::user()->id);
         })
         ->get();
 
-    return view('warga.payment', ['member' => $payments]);
+    return view('warga.payment', $payments);
 }
 
 

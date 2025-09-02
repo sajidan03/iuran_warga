@@ -12,8 +12,8 @@ class PaymentController extends Controller
     //
     public function index()
     {
-        $payments = Payment::with('user')->latest()->get();
-        return view('admin.payments.index', compact('payments'));
+        $payments['payments'] = Payment::with('officer','user', 'duesMember')->latest()->get();
+        return view('admin.payments.index', $payments);
     }
 
     public function create()

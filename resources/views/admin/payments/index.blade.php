@@ -27,7 +27,7 @@
                 <td>{{ $p->user->name }}</td>
                 <td>{{ ucfirst($p->period) }}</td>
                 <td>Rp{{ number_format($p->nominal) }}</td>
-                <td>{{ $p->id_petugas }}</td>
+                <td>{{ $p->officer->user->name}}</td>
                 {{-- <td>
                     <a href="{{ route('payments.edit', $p->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('payments.destroy', $p->id) }}" method="POST" style="display:inline-block">

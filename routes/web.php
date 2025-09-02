@@ -10,7 +10,6 @@ use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    // return view('warga.dashboard');
     return view('landingPage');
 });
 
