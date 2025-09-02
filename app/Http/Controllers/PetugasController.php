@@ -70,26 +70,25 @@ class PetugasController extends Controller
         return view('officer.dashboard', compact('belumBayar', 'sudahBayar', 'bulanIni'));
     }
 
-    public function bayar(dues_members $member)
-    {
-        $bulanIni = Carbon::now()->format('Y-m');
+    // public function bayar(dues_members $member)
+    // {
+    //     $bulanIni = Carbon::now()->format('Y-m');
 
-        Payment::create([
-            'id_user' => $member->id_user,
-            'period' => $bulanIni,
-            'nominal' => $member->category->nominal,
-            'petugas' => auth()->user()->name,
-        ]);
+    //     Payment::create([
+    //         'id_user' => $member->id_user,
+    //         'period' => $bulanIni,
+    //         'nominal' => $member->category->nominal,
+    //         'petugas' => auth()->user()->name,
+    //     ]);
 
-        return back()->with('success', 'Pembayaran berhasil dicatat.');
-    }
+    //     return back()->with('success', 'Pembayaran berhasil dicatat.');
+    // }
 
 
     public function payment(){
         $data['member'] = dues_members::get();
         return view('officer.payment', $data);
     }
-
 public function payment_detail(Request $request, $id)
 {
     try {
@@ -105,7 +104,7 @@ public function payment_detail(Request $request, $id)
 
     $payment = Payment::where('id_user', $member->id_user)->get();
 
-    $tanggalAwal = "01-08-2025";
+    $tanggalAwal = "01-08-2025"; // bisa dibuat dinamis
     $tanggalAkhir = date('d-m-Y');
 
     $period = $member->duesCategory->period;
@@ -117,6 +116,7 @@ public function payment_detail(Request $request, $id)
         $jumlahPeriode = $this->hitungJumlahTahun($tanggalAwal, $tanggalAkhir);
     }
 
+    // Hitung jumlah tagihan tersisa
     if ($payment->count() >= $jumlahPeriode) {
         $jumlah_tagihan = "Tidak Ada";
         $nominal_tagihan = 0;
@@ -125,7 +125,13 @@ public function payment_detail(Request $request, $id)
         $nominal_tagihan = ($jumlahPeriode - $payment->count()) * $member->duesCategory->nominal;
     }
 
+    // === VALIDASI BAYAR ===
     if ($request->bayar) {
+        // Cek apakah sudah lunas
+        if ($payment->count() >= $jumlahPeriode) {
+            return back()->with('error', 'Semua tagihan sudah lunas, tidak perlu melakukan pembayaran lagi!');
+        }
+
         $nominal_bayar = (int) $request->nominal;
         $nominal_kategori = $member->duesCategory->nominal;
 
@@ -138,19 +144,19 @@ public function payment_detail(Request $request, $id)
         }
 
         $jumlah_bayar = $nominal_bayar / $nominal_kategori;
-
         $pembayaranKeTerakhir = Payment::where('id_user', $member->id_user)->count();
 
-    for ($i = 1; $i <= $jumlah_bayar; $i++) {
-        Payment::create([
-            'id_user'        => $member->id_user,
-            'nominal'        => $nominal_kategori,
-            'period'         => $member->duesCategory->period,
-            'id_petugas'     => Auth::user()->id,
-            'id_duesmember'  => $member->id,
-            'total_bayar'  => $pembayaranKeTerakhir + $i,
-        ]);
-    }
+        for ($i = 1; $i <= $jumlah_bayar; $i++) {
+            Payment::create([
+                'id_user'        => $member->id_user,
+                'nominal'        => $nominal_kategori,
+                'period'         => $member->duesCategory->period,
+                'id_petugas'     => Auth::user()->id,
+                'id_duesmember'  => $member->id,
+                'total_bayar'    => $pembayaranKeTerakhir + $i,
+            ]);
+        }
+
         return back()->with('success', 'Pembayaran berhasil disimpan!');
     }
 
@@ -161,6 +167,7 @@ public function payment_detail(Request $request, $id)
 
     return view('officer.payment_detail', $data);
 }
+
 
 function hitungJumlahMinggu($tanggalAwal, $tanggalAkhir)
 {
