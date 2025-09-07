@@ -35,7 +35,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->period }}</td>
-            <td>{{ $item->nominal }}</td>
+            <td>Rp. {{ $item->nominal }}</td>
             <td>{{ $item->created_at }}</td>
             <td>            <form action="{{ route('officer.payment.cancel', $item->id) }}" method="POST" style="display:inline;">
     @csrf
